@@ -1,0 +1,168 @@
+<div >
+    <div>
+        <!--Formulario que se envia a la base de datos-->
+        <form [formGroup]="loginForm" style="background: rgb(0, 0, 0);">
+                   <!-- Botón para ir a la pantalla principal -->
+                   <div class="floating-button">
+                    <a href="/" class="btn btn-primary btn-lg">
+                      <i class="fas fa-home"></i> Volver
+                    </a>
+                  </div>
+          <br><br>
+          <h1
+          style="text-align: center; color: aqua;   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+         FORMULARIO DE  PRODUCTOS </h1><br>
+          <div class="row" >
+            <div class="col-lg-8 mx-auto">
+              <div class="card pb-1">
+                <div class="card-header" >
+                </div>
+                <!--setcion para Ingresar datos POST a la tabla en la base de datos-->
+           <section class="vh-lg-100 mt-lg-0 bg-soft d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center form-bg-image" data-background-lg="../../assets/dist/img/illustrations/signin.svg">
+          <div class="col-12 d-flex align-items-center justify-content-center">
+            <div class="bg-white rounded p-lg-5 w-100 fmxw-500 shadow">
+              <form >
+                <!-- ProductoID -->
+                <div class="form-group mb-4">
+                  <label for="ProductoID">ID</label>
+                  <input type="number" class="form-control" id="ProductoID" formControlName="ProductoID" [attr.disabled]="true" />
+                </div>
+              
+                <!-- Nombre -->
+                <div class="form-group mb-4">
+                  <label for="Nombre">Nombre</label>
+                  <input type="text" class="form-control" id="Nombre" formControlName="Nombre" required />
+                </div>
+              
+                <!-- Descripcion -->
+                <div class="form-group mb-4">
+                  <label for="Descripcion">Descripción</label>
+                  <input type="text" class="form-control" id="Descripcion" formControlName="Descripcion" />
+                </div>
+              
+                <!-- Precio -->
+                <div class="form-group mb-4">
+                  <label for="Precio">Precio</label>
+                  <input type="number" class="form-control" id="Precio" formControlName="Precio" step="0.01" required />
+                </div>
+              
+                <!-- Stock -->
+                <div class="form-group mb-4">
+                  <label for="Stock">Stock</label>
+                  <input type="number" class="form-control" id="Stock" formControlName="Stock" required />
+                </div>
+              
+                <!-- SKU
+                <div class="form-group mb-4">
+                  <label for="SKU">SKU</label>
+                  <input type="text" class="form-control" id="SKU" formControlName="SKU" required />
+                </div> -->
+              
+                <!-- Proveedor -->
+                <div class="form-group mb-4">
+                  <label for="Proveedor">Proveedor</label>
+                  <input type="text" class="form-control" id="Proveedor" formControlName="Proveedor" />
+                </div>
+              
+                <!-- FechaIngreso -->
+                <div class="form-group mb-4">
+                  <label for="FechaIngreso">Fecha de Ingreso</label>
+                  <input type="text" class="form-control" id="FechaIngreso" formControlName="FechaIngreso" [attr.disabled]="true" />
+                </div>
+              
+                <!-- Estado -->
+                <div class="form-group mb-4">
+                  <label for="Estado">Estado</label>
+                  <select class="form-control" id="Estado" formControlName="Estado">
+                    <option [value]="1">Activo</option>
+                    <option [value]="0">Inactivo</option>
+                  </select>
+                </div>
+              
+                <!-- FechaCreacion -->
+                <div class="form-group mb-4">
+                  <label for="FechaCreacion">Fecha de Creación</label>
+                  <input type="text" class="form-control" id="FechaCreacion" formControlName="FechaCreacion" [attr.disabled]="true" />
+                </div>
+              
+                <!-- FechaActualizacion -->
+                <div class="form-group mb-4">
+                  <label for="FechaActualizacion">Fecha de Última Actualización</label>
+                  <input type="text" class="form-control" id="FechaActualizacion" formControlName="FechaActualizacion" />
+                </div>
+              
+                <!-- Botón de Enviar -->
+                <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+              </form>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+                <div class="modal-footer">
+                  <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+                  <button (click)="grabar()" class="btn btn-success m-2">
+                    <i class="fas fa-save"></i>Guardar
+                  </button>
+                  <button class="btn btn-primary m-2" (click)="clear()" type="button">
+                    <i class="fas fa-broom"></i>Limpiar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+    <h1 style="text-align: center;">TABLA DE PRODUCTOS</h1>    
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark" style="text-align: center;">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Descripción</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Stock</th>
+          <!-- <th scope="col">SKU</th> -->
+          <th scope="col">Proveedor</th>
+          <!-- <th scope="col">Fecha de Ingreso</th> -->
+          <th scope="col">Estado</th>
+          <th scope="col">Fecha de Creación</th>
+          <!-- <th scope="col">Fecha de Actualización</th> -->
+          <th scope="col">Acción</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of Producto">
+
+          <td>{{ prod.productoId }}</td>
+          <td>{{ prod.nombre }}</td>
+          <td>{{ prod.descripcion }}</td>
+          <td>{{ prod.precio }}</td>
+          <td>{{ prod.stock }}</td>
+          <td>{{ prod.proveedor }}</td>
+          <td>{{ prod.estado ? 'Activo' : 'Inactivo' }}</td>
+          <td>{{ prod.fechaCreacion | date: 'dd/MM/yyyy' }}</td>
+          <td>      
+            <div class="modal-footer">
+
+              <button (click)="eliminarProducto(prod.productoId)" class="btn btn-danger">
+                <i class="fas fa-trash"></i>
+              </button>
+    
+      
+            </div>
+            
+          <td>
+        </tr>
+          
+    
+      </tbody>
+    </table>
+      
+</div>

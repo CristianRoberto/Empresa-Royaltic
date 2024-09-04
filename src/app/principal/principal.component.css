@@ -1,0 +1,36 @@
+html, body {
+    height: 100%; /* Asegura que el cuerpo ocupe toda la altura de la pantalla */
+    margin: 0; /* Elimina el margen predeterminado */
+  }
+  
+  .todo {
+    background: rgb(0, 0, 0); /* Fondo negro */
+    color: aqua; /* Color de texto para contraste */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /* Fuente personalizada */
+    height: 100vh; /* Ocupa toda la altura de la ventana del navegador */
+    display: flex; /* Utiliza flexbox para alinear el contenido */
+    flex-direction: column; /* Alinea los elementos en columna */
+    align-items: center; /* Centra horizontalmente el contenido */
+    justify-content: center; /* Centra verticalmente el contenido */
+    text-align: center; /* Centra el texto */
+  }
+  
+  .button-container {
+    display: flex; /* Utiliza flexbox para alinear los botones */
+    gap: 10px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio superior */
+  }
+  
+  .button {
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente del botón */
+  }
+  
+  .button:hover {
+    background-color: #0056b3; /* Color de fondo del botón al pasar el ratón */
+  }
+  

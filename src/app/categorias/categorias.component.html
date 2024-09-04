@@ -1,0 +1,148 @@
+<div>
+
+
+  <div>
+        <!--Formulario que se envia a la base de datos-->
+    <form [formGroup]="loginForm" style="background: rgb(0, 0, 0);">
+
+           <!-- Botón para ir a la pantalla principal -->
+           <div class="floating-button">
+            <a href="/" class="btn btn-primary btn-lg">
+              <i class="fas fa-home"></i> Volver
+            </a>
+          </div>
+          
+
+          
+
+      <br><br>
+      <h1
+        style="text-align: center; color: aqua;   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+       FORMULARIO DE  CATEGORIAS </h1><br>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="card pb-1">
+            <div class="card-header">
+            </div>
+            <!--setcion para Ingresar datos POST a la tabla en la base de datos-->
+            <section class="vh-lg-100 mt-lg-0 bg-soft d-flex align-items-center">
+              <div class="container">
+                <div class="row justify-content-center form-bg-image"
+                  data-background-lg="../../assets/dist/img/illustrations/signin.svg">
+                  <div class="col-12 d-flex align-items-center justify-content-center">
+                    <div class="bg-white rounded p-lg-5 w-100 fmxw-500 shadow">
+                      <form>
+                        <!-- ID -->
+                        <div class="form-group mb-4">
+                          <label for="categoriasId">ID</label>
+                          <input type="number" class="form-control" id="categoriasId" formControlName="CategoriasID"
+                            required readonly>
+                        </div>
+
+                        <!-- Nombre -->
+                        <div class="form-group mb-4">
+                          <label for="nombre">Nombre</label>
+                          <input type="text" class="form-control" id="nombre" formControlName="Nombre" required>
+                        </div>
+
+                        <!-- Descripción -->
+                        <div class="form-group mb-4">
+                          <label for="descripcion">Descripción</label>
+                          <textarea class="form-control" id="descripcion" formControlName="Descripcion"></textarea>
+                        </div>
+
+                        <!-- Estado -->
+                        <div class="form-group mb-4">
+                          <label for="estado">Estado</label>
+                          <select class="form-control" id="estado" formControlName="Estado" required>
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                          </select>
+                        </div>
+
+                        <!-- Fecha de Creación -->
+                        <div class="form-group mb-4">
+                          <label for="fechaCreacion">Fecha de Creación</label>
+                          <input type="datetime-local" class="form-control" id="fechaCreacion"
+                            formControlName="FechaCreacion" required>
+                        </div>
+
+                        <!-- Fecha de Última Actualización -->
+                        <div class="form-group mb-4">
+                          <label for="fechaActualizacion">Fecha de Última Actualización</label>
+                          <input type="datetime-local" class="form-control" id="fechaActualizacion"
+                            formControlName="FechaActualizacion">
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <div class="modal-footer">
+              <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+              <button (click)="grabar()" class="btn btn-success m-2">
+                <i class="fas fa-save"></i>Guardar
+              </button>
+              <button class="btn btn-primary m-2" (click)="clear()" type="button">
+                <i class="fas fa-broom"></i>Limpiar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <h1 style="text-align: center;">TABLA DE CATEGORIAS</h1>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark" style="text-align: center;">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Fecha de Creación</th>
+        <th scope="col">Fecha de Actualización</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of Categoria">
+        <td>{{ cat.categoriasId }}</td>
+        <td>{{ cat.nombre }}</td>
+        <td>{{ cat.descripcion }}</td>
+        <td>{{ cat.estado ? 'Activo' : 'Inactivo' }}</td>
+        <td>{{ cat.fechaCreacion | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ cat.fechaActualizacion ? (cat.fechaActualizacion | date: 'dd/MM/yyyy') : 'No actualizado' }}</td>
+
+        <div class="modal-footer">
+
+          <button (click)="eliminarRequerimiento(cat.categoriasId)" class="btn btn-danger">
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+        <td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

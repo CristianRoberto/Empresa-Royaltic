@@ -1,0 +1,12 @@
+.floating-button {
+    position: fixed; /* Fija el botón en la pantalla */
+    top: 20px; /* Distancia desde el borde superior */
+    left: 20px; /* Distancia desde el borde izquierdo */
+    z-index: 1000; /* Asegura que el botón esté sobre otros elementos */
+  }
+  
+  .floating-button .btn {
+    border-radius: 50px; /* Opcional: bordes redondeados para el botón */
+    padding: 10px 20px; /* Ajusta el tamaño del botón según tus necesidades */
+  }
+  

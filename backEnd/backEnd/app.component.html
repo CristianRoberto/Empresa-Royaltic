@@ -1,0 +1,207 @@
+
+<div>
+  <!--Formulario que se envia a la base de datos-->
+  <form [formGroup]="loginForm" style="background: rgb(0, 0, 0);" >
+    <br>
+    <h2 style="text-align: center; color: white; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">hola mi nombre es: CRISTIAN ROBERTO GILCES PANTA</h2>
+    <div class="row" style="background: rgb(0, 0, 0);">
+      <div class="col-lg-8 mx-auto">
+        <div class="card pb-1">
+          <div class="card-header" style="background-color: #000181; color: white; font-weight: bold">   
+          </div>
+
+          <!--setcion para Ingresar datos POST a la tabla en la base de datos-->
+          <section class="vh-lg-100 mt-lg-0 bg-soft d-flex align-items-center" style="background: aquamarine;">
+            <div class="container">
+              <div class="row justify-content-center form-bg-image"
+                data-background-lg="../../assets/dist/img/illustrations/signin.svg">
+                <div class="col-12 d-flex align-items-center justify-content-center">
+                  <div class="bg-white rounded p-lg-5 w-100 fmxw-500">
+
+                    <div class="form-group mb-4">
+                      <h5 class="card-title"></h5>
+                      <div class="item">
+                      </div>
+
+
+                      <!-- ? FACTURA No.     FECHA EMISIÓN@ -->
+                      <div class="row pt-5" >
+                        <div class="col">
+                          <div class="form-group">
+                            <label >CANTIDAD BULTOS</label>
+                            <input type="number" class="form-control" aria-describedby="emailHelp" autofocus required
+                              id="cantidad_bultos" value="110-001-011211001" formControlName="cantidad_bultos" />
+                          </div>
+                        </div>
+                       
+                      </div>
+
+                      <div class="row pt-5">
+                        <div class="col">
+                          <div class="form-group">
+                            <label >CANTIDAD CONTENEDORES UNIDADES</label>
+                            <input type="number" class="form-control" aria-describedby="emailHelp" autofocus required
+                              id="cantidad_contenedores_unidades" value="110-001-011211001" formControlName="cantidad_contenedores_unidades" />
+                          </div>
+                        </div>
+                       
+                      </div>
+
+                      <div class="row pt-5">
+                        <div class="col">
+                          <div class="form-group">
+                            <label >TIPO CARGA</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" autofocus required
+                              id="tipo_carga" value="110-001-011211001" formControlName="tipo_carga" />
+                          </div>
+                        </div>
+                       
+                      </div>
+
+
+                      <div class="row pt-5">
+                        <div class="col">
+                          <div class="form-group">
+                            <label >TIPO CONTENEDOR</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" autofocus required
+                              id="tipo_contenedor" value="110-001-011211001" formControlName="tipo_contenedor" />
+                          </div>
+                        </div>
+                       
+                      </div>
+
+                      <div class="row pt-5">
+                        <div class="col">
+                          <div class="form-group">
+                            <label >DISPOSITIVO DEVOLUCION REGISTRO</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" autofocus required
+                              id="deposito_devolucion_registro_vacio" value="110-001-011211001" formControlName="deposito_devolucion_registro_vacio" />
+                          </div>
+                        </div>
+                       
+                      </div>
+
+                      <div class="row pt-5">
+                        <div class="col">
+                          <div class="form-group">
+                            <label >DIMENSIONES</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" autofocus required
+                              id="dimensiones" value="110-001-011211001" formControlName="dimensiones" />
+                          </div>
+                        </div>
+                       
+                      </div>
+
+                      <div class="row pt-5">
+                        <div class="col">
+                          <div class="form-group">
+                            <label >DIRECCIÓN BODEGA</label>
+                            <input type="text" class="form-control" aria-describedby="emailHelp" autofocus required
+                              id="direccion_bodega" value="110-001-011211001" formControlName="direccion_bodega" />
+                          </div>
+                        </div>
+                       
+                      </div>
+
+                     
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </section>
+
+
+
+          <div class="modal-footer">
+            <button type="button" (click)="grabar()" class="btn btn-success text-center m-5">
+              Guardar
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    
+  </form>
+</div>
+
+
+
+<!--tabla muestra contenido GET base de datos-->
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">CANTIDAD BULTOS</th>
+      <th scope="col">CANTIDAD CONTENEDORES</th>
+      <th scope="col">TIPO CARGA</th>
+      <th scope="col">TIPO CONTENEDOR</th>
+      <th scope="col">DEPOSITO DEVOLUCIÓN</th>
+      <th scope="col">DIMENSIONES</th>
+      <th scope="col">DIRECCIÓN BODEGA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let req of requerimeinto">
+      <th scope="row">{{req.id}}</th>
+      <td>{{req.cantidad_bultos}}</td>
+      <td>{{req.cantidad_contenedores_unidades}}</td>
+      <td>{{req.tipo_carga}}</td>
+      <td>{{req.tipo_contenedor}}</td>
+      <td>{{req.deposito_devolucion_registro_vacio}}</td>
+      <td>{{req.dimensiones}}</td>
+      <td>{{req.direccion_bodega}}</td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+
+
+
+<h1 style="text-align: center; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Sistemas</h1>
+<form style="text-align: center;">
+  <div class="form-row align-items-center">
+    <div class="col-auto my-1">
+      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Calificar</label>
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+        <option selected>Selecionar...</option>
+        <option value="1">Exelente</option>
+        <option value="2">Muy bueno</option>
+        <option value="3">Bueno</option>
+      </select>
+    </div>
+    <div class="col-auto my-1">
+      <div class="custom-control custom-checkbox mr-sm-2">
+        <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+        <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+      </div>
+    </div>
+    <div class="col-auto my-1">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+<br>
+<h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; text-align: center;">MUCHAS GRACIAS</h1>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">IdCategoria</th>
+      <th scope="col">Descripcion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let req of requerimeinto">
+      <th scope="row">{{req.IdCategoria}}</th>
+      <td>{{req.Descripcion}}</td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+
+<h1>asdasdasdas</h1>
